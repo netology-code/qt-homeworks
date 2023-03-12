@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     udpWorker = new UDPworker(this);
     udpWorker->InitSocket();
 
-    connect(udpWorker, &UDPworker::sig_sendDataToGUI, this, &MainWindow::PorcessReceiveData);
+    connect(udpWorker, &UDPworker::sig_sendTimeToGUI, this, &MainWindow::DisplayTime);
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, [&]{
@@ -41,7 +41,7 @@ void MainWindow::on_pb_start_clicked()
 }
 
 
-void MainWindow::PorcessReceiveData(QDateTime data)
+void MainWindow::DisplayTime(QDateTime data)
 {
     counterPck++;
     if(counterPck % 20 == 0){
