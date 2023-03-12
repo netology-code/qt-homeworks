@@ -39,7 +39,7 @@ void UDPworker::ReadDatagram(QNetworkDatagram datagram)
     QDateTime dateTime;
     inStr >> dateTime;
 
-    emit sig_sendDataToGUI(dateTime);
+    emit sig_sendTimeToGUI(dateTime);
 }
 /*!
  * @brief Метод осуществляет опередачу датаграммы
