@@ -21,7 +21,7 @@ public:
 
 private slots:
     void on_pb_start_clicked();
-    void PorcessReceiveData(QDateTime data);
+    void DisplayTime(QDateTime data);
     void on_pb_stop_clicked();
 
 private:
