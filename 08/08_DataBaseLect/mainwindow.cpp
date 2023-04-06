@@ -162,11 +162,6 @@ void MainWindow::ScreenDataFromDB(const QTableWidget *widget, int typeRequest)
     default:
         break;
     }
-
-
-    ///Тут должен быть код ДЗ
-
-
 }
 /*!
  * \brief Метод изменяет стотояние формы в зависимости от статуса подключения к БД
