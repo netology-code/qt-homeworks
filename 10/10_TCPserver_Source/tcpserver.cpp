@@ -242,6 +242,7 @@ void TCPserver::ReadyRead( )
             if(queue.find(incSocket->socketDescriptor()) == queue.end()){
                 queue.insert(incSocket->socketDescriptor(), header);
             }
+            return;
         }
         //В противном случае обрабатываем сообщение
         else{
