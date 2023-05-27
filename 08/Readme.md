@@ -48,6 +48,15 @@
 12. last_update - служебная информация, последнее одновление записи;
 13. special_features - дополнительные особенности фильма;
 14. fulltext - ключевые слова для поиска фильма.
+
+
+Для получения категорий фильмов можн опользоваться запросом 
+
+SELECT title, description  FROM film f
+JOIN film_category fc on f.film_id = fc.film_id
+JOIN category c on c.category_id  = fc.category_id
+WHERE c.name = 'Comedy' ('Horror')
+
 ------
 
 ### Задание 1. 
