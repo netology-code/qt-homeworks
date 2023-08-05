@@ -27,6 +27,7 @@
 ###### Дополнительные сведения
 
 1. Частота дискретизации данных составляет 1000 Гц.
+2. https://drive.google.com/file/d/1XjmogNteEejjzuQXseCR_kZg6TuZ58C9/view?usp=drive_link ссылка на файл testData.adc
 
 ### Правила приёма работы
 
