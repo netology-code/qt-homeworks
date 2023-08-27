@@ -142,7 +142,7 @@ void TCPserver::ProcessingMessage(QDataStream &datastream, ServiceHeader incHead
                 header.len = 0;
                 out << header;
             }
-            else if(header.len == 0){
+            else if(incHeader.len == 0){
 
                 header.status = ERR_ZERO_LEN;
                 header.len = 0;
