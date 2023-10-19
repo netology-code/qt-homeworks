@@ -43,7 +43,6 @@ TCPserver::TCPserver(QObject *parent, uint16_t bindPort)
 {
 
     tcpServer = new QTcpServer(this);
-
     if(tcpServer->listen(QHostAddress::Any, bindPort)){
         qDebug() << "Server started on port: " << BIND_PORT;
         startTime = QTime::currentTime();
@@ -68,18 +67,19 @@ TCPserver::TCPserver(QObject *parent, uint16_t bindPort)
 
         stat.revPck++;
 
-        incSocket = tcpServer->nextPendingConnection();
+        QTcpSocket* incSocket = tcpServer->nextPendingConnection();
+        sockets.insert(incSocket,incSocket->socketDescriptor());
 
         connect(incSocket, &QTcpSocket::readyRead, this, &TCPserver::ReadyRead);
-        connect(incSocket, &QTcpSocket::disconnected, incSocket, [&]{
 
-            qDebug() << "Socket " <<  incSocket->socketDescriptor() << " disconnected!";
-            incSocket->deleteLater();
-            sockets.remove(sockets.indexOf(incSocket));
-
+        connect(incSocket, &QTcpSocket::disconnected, this, [&]{
+            QTcpSocket* delSocket = (QTcpSocket*)sender();
+            qDebug() << "Socket " <<  sockets.find(delSocket).value() << " disconnected!";
+            delSocket->deleteLater();
+            sockets.erase(sockets.find(delSocket));
         });
 
-        sockets.push_back(incSocket);
+
 
         qDebug() << "Socket " <<  incSocket->socketDescriptor() << " connected!";
 
@@ -186,7 +186,7 @@ void TCPserver::ReadyRead( )
 
     stat.revPck++;
 
-    incSocket = (QTcpSocket*)sender();
+    QTcpSocket* incSocket = (QTcpSocket*)sender();
     QDataStream incStream(incSocket);
 
     if(incStream.status() == QDataStream::Ok){
@@ -248,7 +248,6 @@ void TCPserver::ReadyRead( )
             if(queue.find(incSocket->socketDescriptor()) == queue.end()){
                 queue.insert(incSocket->socketDescriptor(), header);
             }
-            return;
         }
         //В противном случае обрабатываем сообщение
         else{
