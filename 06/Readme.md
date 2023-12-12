@@ -16,7 +16,7 @@
 
 ### Задание 1. 
 
-1. В MainWindow, в методе StartRace, реализовать последовательный вызов методов DoWork объектов concurRacq1 и concurRace2 при помощи QtConcurrent.
+1. В MainWindow, в методе StartRace, реализовать последовательный вызов методов DoWork объектов concurRace1 и concurRace2 при помощи QtConcurrent.
 
 ------
 
