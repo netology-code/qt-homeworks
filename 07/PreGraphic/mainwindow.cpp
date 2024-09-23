@@ -40,10 +40,6 @@ QVector<uint32_t> MainWindow::ReadFile(QString path, uint8_t numberChannel)
             mb.exec();
         }
     }
-    else{
-
-        //продумать как выйти из функции
-    }
 
     QDataStream dataStream;
     dataStream.setDevice(&file);
