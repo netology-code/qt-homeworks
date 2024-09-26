@@ -238,6 +238,10 @@ void TCPserver::ReadyRead( )
                             break;
                         }
                     }
+                    header.id = 0;
+                    header.idData = 0;
+                    header.len = 0;
+                    header.status = 0;
                 }
             }
         }
