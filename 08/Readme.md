@@ -50,7 +50,7 @@
 14. fulltext - ключевые слова для поиска фильма.
 
 
-Для получения категорий фильмов можн опользоваться запросом 
+Для получения категорий фильмов можно пользоваться запросом 
 
 SELECT title, description  FROM film f
 JOIN film_category fc on f.film_id = fc.film_id
