@@ -73,6 +73,10 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete race1;
+    delete race2;
+    delete concurRace1;
+    delete concurRace2;
 }
 
 //Метод запускает два потока
